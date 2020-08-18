@@ -1,20 +1,32 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <vs-navbar
+        color="#111111"
+        text-white
+        square
+        center-collapsed
+      >
+        <template #left>
+          <img
+            @click="activeSidebar = !activeSidebar"
+            src="./assets/deshik.png"
+            style="height: 5vh;"
+            alt="logi"
+          />
+        </template>
+      </vs-navbar>
+
+      <vs-sidebar
+        absolute
+        :open.sync="activeSidebar"
+        background="dark"
+      ></vs-sidebar>
+    <router-view/>
+    <footer>
+      Developed by <a href="https://iresharma.me">iresharma</a>♥️
+    </footer>
   </div>
 </template>
-
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
 
 <style>
 #app {
@@ -23,6 +35,22 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  color: rgb(150, 150, 150);
 }
 </style>
+
+
+<script>
+export default {
+  data() {
+    return {
+      activeSidebar: false,
+    }
+  }
+}
+</script>
